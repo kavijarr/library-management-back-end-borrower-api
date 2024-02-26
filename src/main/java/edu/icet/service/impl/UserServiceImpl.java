@@ -15,8 +15,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
+
     final UserRepository repository;
-    ModelMapper mapper;
+    final ModelMapper mapper;
     @Override
     public void saveUser(User user) {
         UserEntity userEntity = mapper.map(user,UserEntity.class);
@@ -37,10 +38,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserEntity> getUsers() {
         return (List<UserEntity>) repository.findAll();
-    }
-
-    @Bean
-    public void setup(){
-        this.mapper=new ModelMapper();
     }
 }

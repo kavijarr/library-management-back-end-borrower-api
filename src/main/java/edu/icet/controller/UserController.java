@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/borrower")
+@RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService service;
+    final UserService service;
     @PostMapping("/add")
     public void add(@RequestBody User user){
         service.saveUser(user);
