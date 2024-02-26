@@ -14,13 +14,14 @@ import lombok.NoArgsConstructor;
 @Entity
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String firstName;
     String lastName;
     String userName;
     String email;
     String address;
+    String address2;
     String country;
     String phoneNumber;
 }

@@ -14,6 +14,7 @@ public class User {
     String userName;
     String email;
     String address;
+    String address2;
     String country;
     String phoneNumber;
 }
