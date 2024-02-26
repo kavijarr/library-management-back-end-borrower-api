@@ -29,4 +29,14 @@ public class UserController {
     public List<UserEntity> getUsers(){
         return service.getUsers();
     }
+
+    @GetMapping("/find-by-userName/{userName}")
+    public User findByUserName(@PathVariable("userName") String userName){
+        return service.findByUserName(userName);
+    }
+
+    @GetMapping("/exist-by-userName/{userName}")
+    public Boolean existsByUserName(@PathVariable("userName")String userName){
+        return service.existsByUserName(userName);
+    }
 }

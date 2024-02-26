@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -38,5 +39,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserEntity> getUsers() {
         return (List<UserEntity>) repository.findAll();
+    }
+
+
+    public User findByUserName(String userName){
+        UserEntity entity = repository.findByUserName(userName);
+        User user = mapper.map(entity, User.class);
+        return user;
+    }
+
+    @Override
+    public Boolean existsByUserName(String userName) {
+        return repository.existsByUserName(userName);
     }
 }
