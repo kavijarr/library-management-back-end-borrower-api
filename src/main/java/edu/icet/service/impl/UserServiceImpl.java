@@ -5,6 +5,7 @@ import edu.icet.entity.UserEntity;
 import edu.icet.repository.UserRepository;
 import edu.icet.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     final UserRepository repository;
@@ -23,7 +25,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         UserEntity userEntity = mapper.map(user,UserEntity.class);
         repository.save(userEntity);
-
+        log.info(user.toString());
     }
 
     @Override

@@ -1,7 +1,9 @@
 package edu.icet.controller;
 
+import edu.icet.dto.Login;
 import edu.icet.dto.User;
 import edu.icet.entity.UserEntity;
+import edu.icet.service.LoginService;
 import edu.icet.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@CrossOrigin
 public class UserController {
 
     final UserService service;
+    final LoginService loginService;
     @PostMapping("/add")
     public void add(@RequestBody User user){
         service.saveUser(user);
+        loginService.insertLoginData(new Login(user.getEmail(),user.getPassword()));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -26,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public List<UserEntity> getUsers(){
+    public Iterable<UserEntity> getUsers(){
         return service.getUsers();
     }
 

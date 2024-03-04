@@ -8,21 +8,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
-public class UserEntity {
+public class LoginEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String userName;
     private String email;
     private String password;
-    private String address;
-    private String address2;
-    private String country;
-    private String phoneNumber;
 }
